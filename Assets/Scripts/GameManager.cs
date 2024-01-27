@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public static GameManager GetInstance() { return instance; }
 
     private LightManager lightManager;
+    private RadioManager radioManager;
     public void setLightManager(LightManager lm) { lightManager = lm; }
+    public void setRadioManager(RadioManager rm) { radioManager = rm; }
 
     private void Awake()
     {
@@ -32,6 +34,10 @@ public class GameManager : MonoBehaviour
         lightManager.CompletePuzzle();
         switch (puzzleNumber)
         {
+            case 1:
+                break;
+            case 2:
+                break;
             case 3:
                 break;
         }
