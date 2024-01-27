@@ -12,10 +12,10 @@ public class ToroidalComponent : MonoBehaviour
     Transform myTransform;
     Rigidbody myRigidbody;
 
-    float maxXWall = -999999,
-        maxZWall = -999999,
-        minXWall = 999998, 
-        minZWall = 999998;
+    float maxXWall = 0,
+        maxZWall = 0,
+        minXWall = 0, 
+        minZWall = 0;
     
     // Start is called before the first frame update
     void Start()
