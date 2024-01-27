@@ -6,13 +6,14 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEditor.Experimental.GraphView;
 
 public class InteractionController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI interactionIndicator;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float distanceToInteract=10f;
-    [SerializeField] private GameObject holdingPosition;
+    [SerializeField] private GameObject holdingPosition, examinationPosition, boxPosition;
     [SerializeField] private Scrollbar launchingProgressBar;
     [SerializeField] private float playerStrength= 5f;
     private float currentStrengthToThrow = 0f;
@@ -40,11 +41,14 @@ public class InteractionController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0)&&currentlyHolding==null)
             {
+                currentlyHolding = hit.collider.gameObject;
                 //Dependiendo del tag del objeto hace realiza distintas acciones, teniendo en cuenta lo que tiene en la mano cuando procede
                 switch (hit.collider.gameObject.tag)
                 {
+                    case "Box":
+                        GetCloseUp();
+                        break;
                     default:
-                        currentlyHolding = hit.collider.gameObject;
                         GrabItem();
                         break;
                 }
@@ -58,8 +62,10 @@ public class InteractionController : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            if(currentlyHolding!=null)
-            DropObject();
+            if(currentlyHolding!=null && currentlyHolding.tag=="Box")
+                ExitCloseUp();
+            else if(currentlyHolding!=null)
+                DropObject();
         }
         if (currentlyHolding != null && Input.GetMouseButton(0))
         {
@@ -87,7 +93,6 @@ public class InteractionController : MonoBehaviour
         currentlyHolding.transform.DORotate(playerCamera.transform.rotation.eulerAngles, 0.2f);
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = true;
         currentlyHolding.GetComponent<Collider>().enabled = false;
-
     }
 
     private void AccumulateStrength()
@@ -114,5 +119,31 @@ public class InteractionController : MonoBehaviour
         launchingProgressBar.size = 0;
         currentStrengthToThrow = 0;
         timer = 0;
+    }
+
+    private void GetCloseUp()
+    {
+        currentlyHolding.transform.parent = playerCamera.transform;
+        currentlyHolding.transform.DOMove(examinationPosition.transform.position, 0.2f);
+        currentlyHolding.transform.DORotate(examinationPosition.transform.rotation.eulerAngles, 0.2f);
+        currentlyHolding.GetComponent<Rigidbody>().isKinematic = true;
+        currentlyHolding.GetComponent<Collider>().enabled = false;
+        GetComponent<FirstPersonMovement>().enabled = false;
+        GetComponent<Rigidbody>().angularVelocity=Vector3.zero;
+        playerCamera.GetComponent<FirstPersonLook>().enabled = false;
+        currentlyHolding.GetComponent<LockController>().enabled = true;
+    }
+
+    private void ExitCloseUp()
+    {
+        currentlyHolding.transform.parent = transform.parent;
+        currentlyHolding.transform.DOMove(boxPosition.transform.position, 0.5f);
+        currentlyHolding.transform.DORotate(boxPosition.transform.rotation.eulerAngles, 0.2f);
+        GetComponent<FirstPersonMovement>().enabled = true;
+        playerCamera.GetComponent<FirstPersonLook>().enabled = true;
+        currentlyHolding.GetComponent<LockController>().enabled = false;
+        currentlyHolding.GetComponent<Collider>().enabled = true;
+        currentlyHolding.GetComponent<Rigidbody>().isKinematic = false;
+        currentlyHolding = null;
     }
 }
