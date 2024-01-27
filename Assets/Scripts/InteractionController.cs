@@ -55,6 +55,7 @@ public class InteractionController : MonoBehaviour
     private void DropObject()
     {
         currentlyHolding.transform.parent = transform.parent;
+        currentlyHolding.GetComponent<Collider>().enabled = true;
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = false;
         currentlyHolding = null;
     }
@@ -65,6 +66,8 @@ public class InteractionController : MonoBehaviour
         currentlyHolding.transform.DOMove(holdingPosition.transform.position, 0.2f);
         currentlyHolding.transform.DORotate(playerCamera.transform.rotation.eulerAngles, 0.2f);
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = true;
+        currentlyHolding.GetComponent<Collider>().enabled = false;
+
     }
 
 }
