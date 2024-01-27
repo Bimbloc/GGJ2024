@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager GetInstance() { return instance; }
 
+    private LightManager lightManager;
+    public void setLightManager(LightManager lm) { lightManager = lm; }
+
     private void Awake()
     {
         if (instance == null)
@@ -23,6 +26,6 @@ public class GameManager : MonoBehaviour
 
     public void CompletePuzzle(int puzzleNumber)
     {
-
+        lightManager.CompletePuzzle();
     }
 }
