@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEditor.Experimental.GraphView;
+using System.Security.Cryptography.X509Certificates;
 
 public class InteractionController : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class InteractionController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if(currentlyHolding!=null && currentlyHolding.tag=="Box")
-                ExitCloseUp();
+                ExitCloseUp(false);
             else if(currentlyHolding!=null)
                 DropObject();
         }
@@ -123,7 +124,6 @@ public class InteractionController : MonoBehaviour
 
     private void GetCloseUp()
     {
-        currentlyHolding.transform.parent = playerCamera.transform;
         currentlyHolding.transform.DOMove(examinationPosition.transform.position, 0.2f);
         currentlyHolding.transform.DORotate(examinationPosition.transform.rotation.eulerAngles, 0.2f);
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = true;
@@ -134,10 +134,13 @@ public class InteractionController : MonoBehaviour
         currentlyHolding.GetComponent<LockController>().enabled = true;
     }
 
-    private void ExitCloseUp()
+    private void ExitCloseUp(bool spawnKey)
     {
         currentlyHolding.transform.parent = transform.parent;
-        currentlyHolding.transform.DOMove(boxPosition.transform.position, 0.5f);
+        if (!spawnKey)
+            currentlyHolding.transform.DOMove(boxPosition.transform.position, 0.5f);
+        else
+            currentlyHolding.transform.DOMove(boxPosition.transform.position, 0.5f).OnComplete(SpawnKey);
         currentlyHolding.transform.DORotate(boxPosition.transform.rotation.eulerAngles, 0.2f);
         GetComponent<FirstPersonMovement>().enabled = true;
         playerCamera.GetComponent<FirstPersonLook>().enabled = true;
@@ -145,5 +148,16 @@ public class InteractionController : MonoBehaviour
         currentlyHolding.GetComponent<Collider>().enabled = true;
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = false;
         currentlyHolding = null;
+    }
+
+    private void SpawnKey()
+    {
+
+    }
+
+    public void EndPuzzle3()
+    {
+        currentlyHolding.layer = 0;
+        ExitCloseUp(true);
     }
 }

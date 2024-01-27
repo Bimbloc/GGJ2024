@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
+
     private static GameManager instance;
 
     public static GameManager GetInstance() { return instance; }
@@ -24,8 +26,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     public void CompletePuzzle(int puzzleNumber)
     {
         lightManager.CompletePuzzle();
+        switch (puzzleNumber)
+        {
+            case 3:
+                break;
+        }
     }
 }
