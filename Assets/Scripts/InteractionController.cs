@@ -54,6 +54,7 @@ public class InteractionController : MonoBehaviour
                         break;
                 }
             }
+            if(currentlyHolding==null)
             interactionIndicator.text = "o";
         }
         else
