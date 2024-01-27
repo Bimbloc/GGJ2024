@@ -17,6 +17,10 @@ public class PauseComponent : MonoBehaviour
     {
         manager.resume();
     }
+    public void options()
+    {
+        manager.enterOptions();
+    }
     public void backToMainTitle()
     {
         manager.backToMainTitle();

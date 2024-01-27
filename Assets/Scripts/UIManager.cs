@@ -11,11 +11,16 @@ public class UIManager : MonoBehaviour
     public static UIManager GetInstance() { return instance; }
 
 
-    private GameObject pauseObject;
+    private GameObject pauseObject = null;
     public void setPauseObject(GameObject po) { pauseObject = po; }
 
-    private FirstPersonLook firstPersonLook;
+    private FirstPersonLook firstPersonLook = null;
     public void setFirstPersonLook(FirstPersonLook fpl) { firstPersonLook = fpl; }
+
+    private GameObject optionsObject = null;
+    public void setOptionsObject(GameObject o) { optionsObject = o; }
+    private GameObject mainTitleObject = null;
+    public void setMainTitleObject(GameObject o) { mainTitleObject = o;}
 
     private void Awake()
     {
@@ -72,7 +77,30 @@ public class UIManager : MonoBehaviour
     public void backToMainTitle()
     {
         SceneManager.LoadScene("MainTitle");
-        pauseObject = null;
-        firstPersonLook = null;
+    }
+
+    public void exitOptions()
+    {
+        optionsObject.SetActive(false);
+        if (pauseObject != null)
+        {
+            pauseObject.SetActive(true);
+        }
+        else if (mainTitleObject != null)
+        {
+            mainTitleObject.SetActive(true);
+        }
+    }
+    public void enterOptions()
+    {
+        if (pauseObject != null)
+        {
+            pauseObject.SetActive(false);
+        }
+        else if (mainTitleObject != null)
+        {
+            mainTitleObject.SetActive(false);
+        }
+        optionsObject.SetActive(true);
     }
 }
