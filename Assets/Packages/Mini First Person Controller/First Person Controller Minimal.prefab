@@ -477,6 +477,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  offset: 0.5
 --- !u!1 &5241892580736583940
 GameObject:
   m_ObjectHideFlags: 0
