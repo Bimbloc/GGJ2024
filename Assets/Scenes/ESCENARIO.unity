@@ -4074,11 +4074,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ecf659295f9488d4db267a2393200006, type: 3}
   - {fileID: 8300000, guid: dca4e1a4de75eb8468778d62e9992445, type: 3}
   - {fileID: 8300000, guid: 97e861cb996bc61458f5ac064801718b, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 279e42e358652d04c84bc7d7a62e570e, type: 3}
   - {fileID: 8300000, guid: 488ab63dd2f70fe4cbb1c2ab13b4b173, type: 3}
   - {fileID: 8300000, guid: 03f05ab30d16725478b24c348a5f540a, type: 3}
   - {fileID: 8300000, guid: c61f6ccac2362bc42a67b2b90de0775c, type: 3}
   - {fileID: 8300000, guid: ac4d1bd31965cef42abca3c81fc372a2, type: 3}
+  - {fileID: 8300000, guid: ba7c333e9fd551e4d8d4fcd1989254bb, type: 3}
 --- !u!4 &1817191487
 Transform:
   m_ObjectHideFlags: 0
