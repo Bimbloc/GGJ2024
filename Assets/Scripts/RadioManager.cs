@@ -47,6 +47,7 @@ public class RadioManager : MonoBehaviour
 
     public void IntereferenceSkip()
     {
+        audiosToPlay.Clear();
         currentRadio.Stop();
         currentRadio.PlayOneShot(sounds[(int)AudioTracks.Interference]);
     }
