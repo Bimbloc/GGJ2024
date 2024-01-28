@@ -35,10 +35,16 @@ public class GameManager : MonoBehaviour
         switch (puzzleNumber)
         {
             case 1:
+                radioManager.IntereferenceSkip();
+                radioManager.SetPuzzle2();
+                radioManager.BreakRadio();
                 break;
             case 2:
+                radioManager.IntereferenceSkip();
+                radioManager.SetPuzzle3();
                 break;
             case 3:
+                
                 player.GetComponent<InteractionController>().SpawnKey();
                 break;
         }
