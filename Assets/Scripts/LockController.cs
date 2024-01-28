@@ -13,6 +13,7 @@ public class LockController : MonoBehaviour
     private List<GameObject> keyObjects = new List<GameObject>();
     private int currentSelected = 0;
     public bool solved = false;
+    [SerializeField] InteractionController ic;
 
     private void Start()
     {
@@ -25,8 +26,19 @@ public class LockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(digits.SequenceEqual(correctCode))
+        if(solved || digits.SequenceEqual(correctCode))
         {
+
+
+            GameObject tapa = gameObject.transform.GetChild(0).gameObject;
+            Vector3 openedRotation = tapa.transform.rotation.eulerAngles + new Vector3(80, 0, 0);
+            tapa.transform.DORotate(openedRotation, 1).OnComplete(() => {
+                //GameManager.GetInstance().CompletePuzzle(3);
+                ic.SpawnKey();
+            });
+            
+                //GameManager.GetInstance().CompletePuzzle(3);
+
         }
         if (!solved)
         {
@@ -60,6 +72,10 @@ public class LockController : MonoBehaviour
         }
         else
         {
+
+           // GameManager.GetInstance().CompletePuzzle(3);
+            //enabled=false;
+
         }
     }   
 }
