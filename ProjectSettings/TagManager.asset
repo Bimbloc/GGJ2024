@@ -8,6 +8,7 @@ TagManager:
   - Box
   - Lock
   - Key
+  - Poster
   layers:
   - Default
   - TransparentFX
