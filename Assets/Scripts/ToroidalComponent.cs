@@ -8,6 +8,7 @@ public class ToroidalComponent : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] walls = new GameObject[4];
+    [SerializeField] private float offset = 0f;
 
     Transform myTransform;
     Rigidbody myRigidbody;
@@ -30,6 +31,11 @@ public class ToroidalComponent : MonoBehaviour
             maxZWall = Mathf.Max(maxZWall, wall.transform.position.z);
             minZWall = Mathf.Min(minZWall, wall.transform.position.z);
         }
+
+        maxXWall -= offset;
+        maxZWall -= offset;
+        minXWall += offset;
+        minZWall += offset;
     }
 
     // Update is called once per frame
