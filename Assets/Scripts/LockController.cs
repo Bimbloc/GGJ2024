@@ -48,7 +48,8 @@ public class LockController : MonoBehaviour
                 digits[currentSelected]++;
                 digits[currentSelected] %= 10;
 
-                keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x+36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
+                //    keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x+36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
+                keyObjects[currentSelected].transform.Rotate(36,0,0,Space.Self);
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -56,7 +57,8 @@ public class LockController : MonoBehaviour
                 digits[currentSelected]--;
                 digits[currentSelected] %= 10;
 
-                keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x - 36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
+                //keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x - 36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
+                keyObjects[currentSelected].transform.Rotate(-36, 0, 0, Space.Self);
             }
         }
         else

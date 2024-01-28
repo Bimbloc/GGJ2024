@@ -31,9 +31,8 @@ public class GoteraResinaHandler : MonoBehaviour
     }
     public void reset()
     {
-
         goteraObject.SetActive(true);
-        pegoteObject.SetActive(false);
+        pegoteObject.GetComponent<Rigidbody>().useGravity = true;
         completed = false;
     }
 }
