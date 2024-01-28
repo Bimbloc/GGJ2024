@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8047738256086964859}
   - component: {fileID: 902739692327694933}
   - component: {fileID: 6300814291639117756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cajatapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,9 @@ GameObject:
   - component: {fileID: 9016028003444275657}
   - component: {fileID: 5381949054492751468}
   - component: {fileID: 7878046372188570278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cajalock
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,15 +113,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8526595161570239347}
-  m_LocalRotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -3.7493994e-33}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -1.7777255, y: 0.626, z: -10.384409}
-  m_LocalScale: {x: 2.5761461, y: 0.6707561, z: 0.93169326}
+  m_LocalScale: {x: 0.65126896, y: 0.16957214, z: 0.235539}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8047738256086964859}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &5381949054492751468
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cajalockruedita (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
 --- !u!4 &9016028003539759314 stripped
@@ -313,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
       propertyPath: m_Name
       value: cajalockruedita (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
@@ -388,6 +396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cajalockruedita
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
 --- !u!4 &9016028003017111589 stripped
@@ -461,6 +473,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
       propertyPath: m_Name
       value: cajalockruedita (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2692d86696340b6459d2cca8636534a5, type: 3}
