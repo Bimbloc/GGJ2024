@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
                 radioManager.SetPuzzle3();
                 break;
             case 3:
+                radioManager.IntereferenceSkip();
                 player.GetComponent<InteractionController>().SpawnKey();
                 radioManager.EndGameConversation();
                 player.GetComponent<FirstPersonMovement>().enabled=false;
