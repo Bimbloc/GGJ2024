@@ -9,9 +9,9 @@ public class PegoteController : MonoBehaviour
     {
         initialPosition = transform.position;
     }
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.layer == 1 << 3)
+        if (transform.position.y<0.5f)
         {
             transform.position = initialPosition;
             gameObject.SetActive(false);
