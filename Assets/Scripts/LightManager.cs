@@ -8,12 +8,16 @@ public class LightManager : MonoBehaviour
     [SerializeField] private GameObject luz2;
     [SerializeField] private GameObject luz3;
 
+    AudioSource audio;
+
     private Stack<GameObject> stack = new Stack<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager.GetInstance().setLightManager(this);
+
+        audio = GetComponent<AudioSource>();
 
         stack.Push(luz3);
         stack.Push(luz2);
@@ -26,6 +30,7 @@ public class LightManager : MonoBehaviour
     {
         if (stack.Count > 1)
         {
+            audio.Play();
             stack.Pop();
             stack.Peek().SetActive(true);
         }
