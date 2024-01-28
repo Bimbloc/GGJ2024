@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class RadioManager : MonoBehaviour
 {
@@ -13,16 +14,17 @@ public class RadioManager : MonoBehaviour
         GameManager.GetInstance().setRadioManager(this);
         currentRadio = normalRadio;
         audiosToPlay.Add(sounds[(int)AudioTracks.IntroDialogue]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle1Music]);
     }
     public enum AudioTracks
     {
         IntroDialogue,
         Puzzle1Music,
-        Puzzle1Dialogue,
-        Puzzle2Music,
         Puzzle2Dialogue,
-        Puzzle3Music,
+        Puzzle2Music,
         Puzzle3Dialogue,
+        Puzzle3Music,
         FinalDialogue,
         CreditsMusic,
         Interference
@@ -55,5 +57,18 @@ public class RadioManager : MonoBehaviour
     public void BreakRadio()
     {
         currentRadio = helloKittyRadio;
+    }
+
+    public void SetPuzzle2()
+    {
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle2Dialogue]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle2Music]);
+    }
+    public void SetPuzzle3()
+    {
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Dialogue]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Music]);
     }
 }
