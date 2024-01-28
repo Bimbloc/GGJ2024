@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorLockBehavior : MonoBehaviour
 {
-    private GameObject door = new GameObject();
+    private GameObject door ;
 
     private void Start()
     {
@@ -16,8 +16,15 @@ public class DoorLockBehavior : MonoBehaviour
     {
         if (other.gameObject.tag=="Key")
         {
-            Vector3 openedRotation = door.transform.rotation.eulerAngles + new Vector3(0, 90, 0);
-            door.transform.DORotate(openedRotation, 1).OnComplete(()=> { enabled = false; });
+            // Vector3 openedRotation = door.transform.rotation.eulerAngles + new Vector3(0, 90, 0);
+            //door.transform.DORotate(openedRotation, 1).OnComplete(()=> { enabled = false; });
+            abrir();
         }
+    }
+
+    public void abrir()
+    {
+        Vector3 openedRotation = door.transform.rotation.eulerAngles + new Vector3(0, 90, 0);
+        door.transform.DORotate(openedRotation, 1).OnComplete(() => { enabled = false; });
     }
 }

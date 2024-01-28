@@ -61,8 +61,9 @@ public class InteractionController : MonoBehaviour
                             currentlyHolding.transform.parent = transform.parent;
                             currentlyHolding.transform.DOMove(hit.transform.position, 0.2f).OnComplete(() => currentlyHolding.transform.parent = hit.transform);
                             currentlyHolding.transform.DORotate(hit.transform.forward, 0.2f);
-                            currentlyHolding.transform.GetComponent<Rigidbody>().isKinematic = true;
+                            currentlyHolding.transform.GetComponent<Rigidbody>().isKinematic = false;
                             currentlyHolding=null;
+                            hit.collider.gameObject.GetComponent<DoorLockBehavior>().abrir();
                         }
                             break;
                         
