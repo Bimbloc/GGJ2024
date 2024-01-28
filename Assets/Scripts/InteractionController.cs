@@ -40,21 +40,36 @@ public class InteractionController : MonoBehaviour
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distanceToInteract,interactableLayer))
         {
-            if (Input.GetMouseButtonDown(0)&&currentlyHolding==null)
+            if (Input.GetMouseButtonDown(0))
             {
                 //Dependiendo del tag del objeto hace realiza distintas acciones, teniendo en cuenta lo que tiene en la mano cuando procede
                 switch (hit.collider.gameObject.tag)
                 {
                     case "Box":
-                        currentlyHolding = hit.collider.gameObject;
-                        GetCloseUp();
+                        if (currentlyHolding == null)
+                        {
+                            currentlyHolding = hit.collider.gameObject;
+                            GetCloseUp();
+                        }
                         break;
                     case "Poster":
                         hit.transform.GetComponent<Rigidbody>().useGravity = true;
                         break;
+                    case "Lock":
+                        if (currentlyHolding.tag == "Key")
+                        {
+                            currentlyHolding.transform.DOMove(hit.transform.position, 0.2f).OnComplete(() => currentlyHolding.transform.parent = hit.transform);
+                            currentlyHolding.transform.DORotate(hit.transform.rotation.eulerAngles, 0.2f);
+                            currentlyHolding.transform.GetComponent<Rigidbody>().isKinematic = true;
+                        }
+                            break;
+                        
                     default:
-                        currentlyHolding = hit.collider.gameObject;
-                        GrabItem();
+                        if (currentlyHolding == null)
+                        {
+                            currentlyHolding = hit.collider.gameObject;
+                            GrabItem();
+                        }
                         break;
                 }
             }
