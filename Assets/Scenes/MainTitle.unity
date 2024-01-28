@@ -830,6 +830,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  credits: {fileID: 4242410806685957199, guid: 2173d4f448b7535478d4cad91a1ba9e5, type: 3}
+  ending: 0
 --- !u!4 &528668372
 Transform:
   m_ObjectHideFlags: 0

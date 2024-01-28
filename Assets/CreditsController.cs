@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CreditsController : MonoBehaviour
 {
@@ -9,6 +10,6 @@ public class CreditsController : MonoBehaviour
     private void Start()
     {
         DOTween.Init();
-        gameObject.transform.DOMove(positionToMove.transform.position, 20);
+        gameObject.transform.DOMove(positionToMove.transform.position, 20).OnComplete(() => { SceneManager.LoadScene("MainTitle"); });
     }
 }

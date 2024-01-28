@@ -16,6 +16,7 @@ public class DoorLockBehavior : MonoBehaviour
     {
         if (other.gameObject.tag=="Key")
         {
+            GameManager.GetInstance().ending=true;
             // Vector3 openedRotation = door.transform.rotation.eulerAngles + new Vector3(0, 90, 0);
             //door.transform.DORotate(openedRotation, 1).OnComplete(()=> { enabled = false; });
             abrir();

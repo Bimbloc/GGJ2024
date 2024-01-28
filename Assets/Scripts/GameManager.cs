@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
+    [SerializeField] private GameObject credits;
     private static GameManager instance;
 
     public static GameManager GetInstance() { return instance; }
@@ -32,9 +33,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(ending)
+        if(ending&&radioManager.radioPlaying()&&radioManager.finalAudioPlaying())
         {
-
+            Instantiate(credits);
         }
     }
     public void CompletePuzzle(int puzzleNumber)

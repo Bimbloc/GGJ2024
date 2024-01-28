@@ -9,16 +9,7 @@ public class RadioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> sounds = new List<AudioClip>();
     private List<AudioClip> audiosToPlay = new List<AudioClip>();
     private AudioSource currentRadio;
-    private void Start()
-    {
-        GameManager.GetInstance().setRadioManager(this);
-        currentRadio = normalRadio;
-        audiosToPlay.Add(sounds[(int)AudioTracks.Silence]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.IntroDialogue]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle1Music]);
-    }
-    public enum AudioTracks
+    private AudioTracks currentTrack; public enum AudioTracks
     {
         IntroDialogue,
         Puzzle1Music,
@@ -32,6 +23,19 @@ public class RadioManager : MonoBehaviour
         FinalDialogue,
         Silence,
     }
+    public bool radioPlaying() { return currentRadio.isPlaying; }
+    public bool finalAudioPlaying() { return AudioTracks.FinalDialogue == currentTrack; }
+
+    private void Start()
+    {
+        GameManager.GetInstance().setRadioManager(this);
+        currentRadio = normalRadio;
+        audiosToPlay.Add(sounds[(int)AudioTracks.Silence]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.IntroDialogue]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle1Music]);
+    }
+    
     private void Update()
     {
         if (!currentRadio.isPlaying&&audiosToPlay.Count>0)
@@ -46,6 +50,7 @@ public class RadioManager : MonoBehaviour
             audiosToPlay.Add(sounds[(int)audio]);
         else
         {
+            currentTrack = audio; 
             currentRadio.PlayOneShot(sounds[(int)audio]);
         }
     }
