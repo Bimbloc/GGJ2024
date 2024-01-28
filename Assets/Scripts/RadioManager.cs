@@ -12,6 +12,7 @@ public class RadioManager : MonoBehaviour
     {
         GameManager.GetInstance().setRadioManager(this);
         currentRadio = normalRadio;
+        audiosToPlay.Add(sounds[(int)AudioTracks.IntroDialogue]);
     }
     public enum AudioTracks
     {
@@ -23,7 +24,8 @@ public class RadioManager : MonoBehaviour
         Puzzle3Music,
         Puzzle3Dialogue,
         FinalDialogue,
-        CreditsMusic
+        CreditsMusic,
+        Interference
     }
     private void Update()
     {
@@ -39,9 +41,14 @@ public class RadioManager : MonoBehaviour
             audiosToPlay.Add(sounds[(int)audio]);
         else
         {
-            int value = (int)audio;
-            currentRadio.PlayOneShot(sounds[value]);
+            currentRadio.PlayOneShot(sounds[(int)audio]);
         }
+    }
+
+    public void IntereferenceSkip()
+    {
+        currentRadio.Stop();
+        currentRadio.PlayOneShot(sounds[(int)AudioTracks.Interference]);
     }
 
     public void BreakRadio()

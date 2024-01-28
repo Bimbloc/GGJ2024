@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
             case 2:
                 break;
             case 3:
+                player.GetComponent<InteractionController>().SpawnKey();
                 break;
         }
     }

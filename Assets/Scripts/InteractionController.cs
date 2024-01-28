@@ -170,7 +170,7 @@ public class InteractionController : MonoBehaviour
         currentlyHolding = null;
     }
 
-    private void SpawnKey()
+    public void SpawnKey()
     {
         Instantiate(key, boxPosition.transform.position, Quaternion.identity);
     }

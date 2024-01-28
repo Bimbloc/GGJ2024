@@ -9,7 +9,7 @@ using DG.Tweening;
 public class LockController : MonoBehaviour
 {
     private List<int> digits = new List<int>() { 0, 0, 0, 0 };
-    private List<int> correctCode = new List<int>() { 1, 0, 1, 2 };
+    [SerializeField] private List<int> correctCode = new List<int>() { 1, 0, 1, 2 };
     private List<GameObject> keyObjects = new List<GameObject>();
     private int currentSelected = 0;
     public bool solved = false;
@@ -48,7 +48,6 @@ public class LockController : MonoBehaviour
                 digits[currentSelected]++;
                 digits[currentSelected] %= 10;
 
-                //    keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x+36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
                 keyObjects[currentSelected].transform.Rotate(36,0,0,Space.Self);
             }
 
@@ -57,7 +56,6 @@ public class LockController : MonoBehaviour
                 digits[currentSelected]--;
                 digits[currentSelected] %= 10;
 
-                //keyObjects[currentSelected].transform.DOLocalRotate(new Vector3(keyObjects[currentSelected].transform.rotation.x - 36, keyObjects[currentSelected].transform.rotation.y, keyObjects[currentSelected].transform.rotation.z), 0.2f);
                 keyObjects[currentSelected].transform.Rotate(-36, 0, 0, Space.Self);
             }
         }
