@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorLockBehavior : MonoBehaviour
 {
-    private GameObject door;
+    private GameObject door = new GameObject();
 
     private void Start()
     {
