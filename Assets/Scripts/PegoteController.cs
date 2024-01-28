@@ -14,6 +14,7 @@ public class PegoteController : MonoBehaviour
         if (transform.position.y<0.5f)
         {
             transform.position = initialPosition;
+            GetComponent<Rigidbody>().useGravity = false;
             gameObject.SetActive(false);
         }
     }
