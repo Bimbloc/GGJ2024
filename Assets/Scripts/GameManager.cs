@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
                 radioManager.SetPuzzle3();
                 break;
             case 3:
-                
                 player.GetComponent<InteractionController>().SpawnKey();
+                radioManager.EndGameConversation();
                 break;
         }
     }

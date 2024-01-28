@@ -27,7 +27,6 @@ public class LockController : MonoBehaviour
     {
         if(digits.SequenceEqual(correctCode))
         {
-                GameManager.GetInstance().CompletePuzzle(3);
         }
         if (!solved)
         {
@@ -61,8 +60,6 @@ public class LockController : MonoBehaviour
         }
         else
         {
-            GameManager.GetInstance().CompletePuzzle(3);
-            enabled=false;
         }
     }   
 }

@@ -25,9 +25,10 @@ public class RadioManager : MonoBehaviour
         Puzzle2Music,
         Puzzle3Dialogue,
         Puzzle3Music,
-        FinalDialogue,
+        Dialogue4,
         CreditsMusic,
-        Interference
+        Interference,
+        FinalDialogue
     }
     private void Update()
     {
@@ -69,6 +70,13 @@ public class RadioManager : MonoBehaviour
     {
         audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Dialogue]);
         audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Dialogue4]);
+        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
         audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Music]);
+    }
+
+    public void EndGameConversation()
+    {
+        audiosToPlay.Add(sounds[(int)AudioTracks.FinalDialogue]);
     }
 }
