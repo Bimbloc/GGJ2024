@@ -35,9 +35,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name == "MainScene")
+            if (SceneManager.GetActiveScene().name == "ESCENARIO")
             {
                 pause();
             }
@@ -46,11 +46,7 @@ public class UIManager : MonoBehaviour
 
     public void startGame()
     {
-        SceneManager.LoadScene("MainScene");
-    }
-    public void openOptions()
-    {
-        SceneManager.LoadScene("OptionsScene");
+        SceneManager.LoadScene("ESCENARIO");
     }
     public void quitGame()
     {

@@ -453,9 +453,10 @@ MonoBehaviour:
   interactionIndicator: {fileID: 0}
   playerCamera: {fileID: 5256384803381100468}
   distanceToInteract: 10
-  holdingPosition: {fileID: 0}
+  holdingPosition: {fileID: 143249127}
   examinationPosition: {fileID: 7714530432382646334}
   boxPosition: {fileID: 0}
+  key: {fileID: 0}
   launchingProgressBar: {fileID: 0}
   playerStrength: 8
   changeStrengthValue: 0.4
@@ -671,6 +672,7 @@ MonoBehaviour:
   character: {fileID: 5238820401998598406}
   sensitivity: 2
   smoothing: 1.5
+  velocity: {x: 0, y: 0}
 --- !u!114 &3170536620832770928
 MonoBehaviour:
   m_ObjectHideFlags: 0
