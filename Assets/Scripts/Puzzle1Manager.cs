@@ -20,7 +20,7 @@ public class Puzzle1Manager : MonoBehaviour
             {
                 if (i > next)
                 {
-                    reset();
+                    reset(i);
                     break;
                 }
                 else if (i == next) 
@@ -43,12 +43,8 @@ public class Puzzle1Manager : MonoBehaviour
         this.enabled = false;
     }
 
-    void reset()
+    void reset(int i)
     {
-        foreach (var gotera in goteras)
-        {
-            gotera.reset();
-            next = 0;
-        }
+        goteras[i].reset();
     }
 }

@@ -13,9 +13,15 @@ public class PegoteController : MonoBehaviour
     {
         if (transform.position.y<0.5f)
         {
-            transform.position = initialPosition;
-            GetComponent<Rigidbody>().useGravity = false;
-            gameObject.SetActive(false);
+            reset(this);
         }
+    }
+
+    private void reset(PegoteController peg)
+    {
+        peg.transform.position = peg.initialPosition;
+        peg.GetComponent<Rigidbody>().useGravity = false;
+        peg.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        peg.gameObject.SetActive(false);
     }
 }
