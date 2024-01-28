@@ -12,6 +12,7 @@ public class Puzzle2Controller : MonoBehaviour
         {
             trashNum++;
             other.tag = "Untagged";
+            other.gameObject.SetActive(false);
             if(trashNum==trashTarget) {
                 GameManager.GetInstance().CompletePuzzle(2);
             }
