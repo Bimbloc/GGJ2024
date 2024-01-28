@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public void setLightManager(LightManager lm) { lightManager = lm; }
     public void setRadioManager(RadioManager rm) { radioManager = rm; }
 
+    public bool ending=false;
+
     private void Awake()
     {
         if (instance == null)
@@ -28,7 +30,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(ending)
+        {
 
+        }
+    }
     public void CompletePuzzle(int puzzleNumber)
     {
         lightManager.CompletePuzzle();
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
             case 3:
                 player.GetComponent<InteractionController>().SpawnKey();
                 radioManager.EndGameConversation();
+                player.GetComponent<FirstPersonMovement>().enabled=false;
                 break;
         }
     }
