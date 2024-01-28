@@ -252,9 +252,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gotera (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5255599099243721495, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5255599099243721495, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,7 +558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &2028114172
 MonoBehaviour:
@@ -578,6 +590,18 @@ PrefabInstance:
     - target: {fileID: 5255599099243721492, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
       propertyPath: m_Name
       value: Gotera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255599099243721494, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5255599099243721495, guid: edd9c1344fe83854ba1dedc131cc334c, type: 3}
       propertyPath: m_RootOrder
