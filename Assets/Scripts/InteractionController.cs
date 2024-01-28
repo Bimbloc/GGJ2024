@@ -14,7 +14,7 @@ public class InteractionController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactionIndicator;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float distanceToInteract=10f;
-    [SerializeField] private GameObject holdingPosition, examinationPosition, boxPosition;
+    [SerializeField] private GameObject holdingPosition, examinationPosition, boxPosition, key;
     [SerializeField] private Scrollbar launchingProgressBar;
     [SerializeField] private float playerStrength= 5f;
     private float currentStrengthToThrow = 0f;
@@ -42,14 +42,18 @@ public class InteractionController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0)&&currentlyHolding==null)
             {
-                currentlyHolding = hit.collider.gameObject;
                 //Dependiendo del tag del objeto hace realiza distintas acciones, teniendo en cuenta lo que tiene en la mano cuando procede
                 switch (hit.collider.gameObject.tag)
                 {
                     case "Box":
+                        currentlyHolding = hit.collider.gameObject;
                         GetCloseUp();
                         break;
+                    case "Poster":
+                        hit.transform.GetComponent<Rigidbody>().useGravity = true;
+                        break;
                     default:
+                        currentlyHolding = hit.collider.gameObject;
                         GrabItem();
                         break;
                 }
@@ -153,7 +157,7 @@ public class InteractionController : MonoBehaviour
 
     private void SpawnKey()
     {
-
+        Instantiate(key, boxPosition.transform.position, Quaternion.identity);
     }
 
     public void EndPuzzle3()
