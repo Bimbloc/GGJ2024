@@ -22,7 +22,8 @@ public class InteractionController : MonoBehaviour
     private float timeUntilDetection=1f;
     private int interactableLayer = 1<<6;
     private GameObject currentlyHolding = null;
-    
+    private Vector3 offset = new Vector3(0, 0, 0.37f);
+
 
     //Inicialización de DoTween
     void Start()
@@ -111,8 +112,8 @@ public class InteractionController : MonoBehaviour
 
     private void GrabItem()
     {
-        currentlyHolding.transform.parent = playerCamera.transform;
-        currentlyHolding.transform.DOMove(holdingPosition.transform.position, 0.2f);
+        currentlyHolding.transform.parent = holdingPosition.transform;
+        currentlyHolding.transform.DOLocalMove(offset, 0.2f);
         currentlyHolding.transform.DORotate(playerCamera.transform.rotation.eulerAngles, 0.2f);
         currentlyHolding.GetComponent<Rigidbody>().isKinematic = true;
         currentlyHolding.GetComponent<Collider>().enabled = false;
