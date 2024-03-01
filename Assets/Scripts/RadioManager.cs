@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class RadioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource normalRadio, helloKittyRadio;
     [SerializeField] private List<AudioClip> sounds = new List<AudioClip>();
-    private List<AudioClip> audiosToPlay = new List<AudioClip>();
+    private List<Tuple<AudioClip,bool>> audiosToPlay = new List<Tuple<AudioClip, bool>>();
     private AudioSource currentRadio;
     private AudioTracks currentTrack; public enum AudioTracks
     {
@@ -30,30 +31,36 @@ public class RadioManager : MonoBehaviour
     {
         GameManager.GetInstance().setRadioManager(this);
         currentRadio = normalRadio;
-        audiosToPlay.Add(sounds[(int)AudioTracks.Silence]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.IntroDialogue]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle1Music]);
+        audiosToPlay.Add(new Tuple<AudioClip,bool> (sounds[(int)AudioTracks.Silence],false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.IntroDialogue], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Interference], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Puzzle1Music], true));
     }
     
     private void Update()
     {
         if (!currentRadio.isPlaying&&audiosToPlay.Count>0)
         {
-            currentRadio.PlayOneShot(audiosToPlay[0]);
+            if (audiosToPlay[0].Item2)
+                currentRadio.PlayOneShot(audiosToPlay[0].Item1);
+            else
+            {
+                currentRadio.loop = true;
+                currentRadio.PlayOneShot(audiosToPlay[0].Item1);
+            }
             audiosToPlay.RemoveAt(0);
         }
     }
 
-    public void PlayAudioTrack(AudioTracks audio) {
-        if (currentRadio.isPlaying)
-            audiosToPlay.Add(sounds[(int)audio]);
-        else
-        {
-            currentTrack = audio; 
-            currentRadio.PlayOneShot(sounds[(int)audio]);
-        }
-    }
+    //public void PlayAudioTrack(AudioTracks audio) {
+    //    if (currentRadio.isPlaying)
+    //        audiosToPlay.Add(sounds[(int)audio]);
+    //    else
+    //    {
+    //        currentTrack = audio; 
+    //        currentRadio.PlayOneShot(sounds[(int)audio]);
+    //    }
+    //}
 
     public void IntereferenceSkip()
     {
@@ -69,21 +76,21 @@ public class RadioManager : MonoBehaviour
 
     public void SetPuzzle2()
     {
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle2Dialogue]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle2Music]);
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Puzzle2Dialogue], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Interference], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Puzzle2Music], true));
     }
     public void SetPuzzle3()
     {
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Dialogue]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Dialogue4]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Interference]);
-        audiosToPlay.Add(sounds[(int)AudioTracks.Puzzle3Music]);
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Puzzle3Dialogue], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Interference], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Dialogue4], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Interference], false));
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.Puzzle3Music], true));
     }
 
     public void EndGameConversation()
     {
-        audiosToPlay.Add(sounds[(int)AudioTracks.FinalDialogue]);
+        audiosToPlay.Add(new Tuple<AudioClip, bool>(sounds[(int)AudioTracks.FinalDialogue], false));
     }
 }
